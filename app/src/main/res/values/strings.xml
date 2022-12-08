@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ManageAbill</string>
+    <string-array name="user">
+        <item>Select</item>
+        <item>Split Bill</item>
+        <item>Log In</item>
+        <item>Register</item>
+    </string-array>
+
+    <string-array name="bill">
+        <item>Select</item>
+        <item>Split Bill</item>
+        <item>View Bills</item>
+        <item>Add Bill</item>
+        <item>Update Bill</item>
+        <item>Log Out</item>
+    </string-array>
+</resources>
+
+
