@@ -50,18 +50,19 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idAddBillName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
         android:hint="Enter Bill Name"
-        android:padding="3dp"
+        android:padding="1dp"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtBillName"
-            android:layout_width="match_parent"
+            android:layout_width="316dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:importantForAutofill="no"
@@ -72,21 +73,24 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--edit text to enter bill amount-->
+
+    <!--   edit text to enter due date-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idBillAmount"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
         android:hint="Enter Bill amount"
-        android:padding="3dp"
+        android:padding="1dp"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtBillAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="316dp"
+            android:layout_height="match_parent"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
@@ -95,13 +99,12 @@
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
- <!--   edit text to enter due date-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idDueDate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Select Due Date"
         android:padding="5dp"
         android:clickable="false"
@@ -109,17 +112,17 @@
         app:hintTextColor="@color/black">
 
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/idEdtDueDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="14sp" />
-</com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdtDueDate"
+            android:layout_width="316dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!--edit text to enter reminder date-->
     <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +130,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Select Reminder Date"
         android:padding="5dp"
         android:textColorHint="@color/black"
@@ -135,7 +138,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtReminder"
-            android:layout_width="311dp"
+            android:layout_width="316dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:importantForAutofill="no"
@@ -151,7 +154,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Select Reminder Time"
         android:padding="5dp"
         android:textColorHint="@color/black"
@@ -159,8 +162,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtReminderTime"
-            android:layout_width="311dp"
-            android:layout_height="wrap_content"
+            android:layout_width="316dp"
+            android:layout_height="match_parent"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="time"
@@ -175,7 +178,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Notes(Optional)"
         android:padding="5dp"
         android:textColorHint="@color/black"
@@ -183,8 +186,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idEdtNotes"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="316dp"
+            android:layout_height="match_parent"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
