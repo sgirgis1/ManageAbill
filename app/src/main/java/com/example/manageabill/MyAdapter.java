@@ -13,14 +13,15 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList expenseName,expenseAmount,etDate, reminder, notes;
+    private ArrayList expenseName,expenseAmount,etDate, reminder,reminderTime, notes;
 
-    public MyAdapter(Context context, ArrayList expenseName, ArrayList expenseAmount, ArrayList etDate, ArrayList reminder, ArrayList notes) {
+    public MyAdapter(Context context, ArrayList expenseName, ArrayList expenseAmount, ArrayList etDate, ArrayList reminder, ArrayList reminderTime, ArrayList notes) {
         this.context = context;
         this.expenseName = expenseName;
         this.expenseAmount = expenseAmount;
         this.etDate = etDate;
         this.reminder = reminder;
+        this.reminderTime = reminderTime;
         this.notes = notes;
     }
 
@@ -38,6 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     holder.expenseAmount.setText(String.valueOf(expenseAmount.get(position)));
     holder.etDate.setText(String.valueOf(etDate.get(position)));
     holder.reminder.setText(String.valueOf(reminder.get(position)));
+    holder.reminderTime.setText(String.valueOf(reminderTime.get(position)));
     holder.notes.setText(String.valueOf(notes.get(position)));
 
     }
@@ -48,13 +50,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView expenseName, expenseAmount, etDate, reminder, notes;
+        TextView expenseName, expenseAmount, etDate, reminder,reminderTime, notes;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             expenseName = itemView.findViewById(R.id.textName);
             expenseAmount = itemView.findViewById(R.id.textAmount);
             etDate = itemView.findViewById(R.id.textDue);
             reminder = itemView.findViewById(R.id.textReminder);
+            reminderTime = itemView.findViewById((R.id.textReminderTime));
             notes = itemView.findViewById(R.id.textNotes);
         }
     }

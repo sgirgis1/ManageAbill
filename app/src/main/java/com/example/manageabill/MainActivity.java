@@ -10,15 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.logging.Logger;
 
-import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends AppCompatActivity {
     private TextInputEditText amountEdt, peopleEdt, tipEdt;
     private TextView amtTV;
@@ -82,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     totalBill = (Float.parseFloat(amountEdt.getText().toString()) + ((Float.parseFloat(amountEdt.getText().toString()) *tipPerc)));
                     individualAmt = (totalBill + tipPerc) / Float.parseFloat(
                             peopleEdt.getText().toString());
-                    Double roundOff = Math.round(individualAmt*100.0)/100.0;
+                   Double roundOff = Math.round(individualAmt*100.0)/100.0;
                     // setting amount to text view.
                     amtTV.setText("Individual Amount : \n" + "$"+roundOff);
                 }

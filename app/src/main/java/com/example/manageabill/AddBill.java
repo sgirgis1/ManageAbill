@@ -1,7 +1,7 @@
 package com.example.manageabill;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
+
 
 import android.app.DatePickerDialog;
 import android.app.Notification;
@@ -11,14 +11,12 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -26,18 +24,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.timepicker.TimeFormat;
-
-import java.math.BigDecimal;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -65,7 +57,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
             expenseNote = findViewById(R.id.idEdtNotes);
             submitBtn = findViewById(R.id.idBtnSubmit);
 
-            /*reminderDate.setOnClickListener((View.OnClickListener) this);*/
             Calendar calendar = Calendar.getInstance();
             final int year = calendar.get(Calendar.YEAR);
             final int month = calendar.get(Calendar.MONTH);
@@ -98,8 +89,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
                                 startActivity(intent);
                             } else {
                                 if (parent.getItemAtPosition(position).equals("Log Out")) {
-
-                                    /*Intent intent = new Intent(AddBill.this, LogIn.class);*/
                                     finishAffinity();
                                     startActivity(new Intent(AddBill.this, LogIn.class));
 
@@ -115,38 +104,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
                 }
             });
 
-
-            /*NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID)
-                    .setSmallIcon(R.drawable.notification_icon)
-                            .setContentTitle(textTitle)
-                                    .set*/
-
-
-           /* reminder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final Calendar date;
-                    final Calendar currentDate = Calendar.getInstance();
-                    date = Calendar.getInstance();
-                    new DatePickerDialog(AddBill.this, new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            date.set(year, monthOfYear, dayOfMonth);
-                            new TimePickerDialog(AddBill.this, new TimePickerDialog.OnTimeSetListener() {
-                                @Override
-                                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                    date.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                                    date.set(Calendar.MINUTE, minute);
-                                    // Set the alarm here
-                                    DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-                                    mTextView.setText(dateFormat.format(date.getTime()));
-                                    startAlarm(date);
-                                }
-                            }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-                        }
-                    }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-                }
-            });*/
             etDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -162,6 +119,7 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
                     datePickerDialog.show();
                 }
             });
+
             reminderDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -195,7 +153,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
                     }, hour, minute,false);
                     timePickerDialog.show();
                 }
-               /* private void*/
 
             });
 
@@ -211,12 +168,51 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
 
                 Boolean checkInsertData = DB.insertData(name, amount, date, rem, remTime, note);
                 if (checkInsertData == true) {
+                    processInsert(name, rem, remTime);
                     Toast.makeText(AddBill.this, "Bill Successfully Saved!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddBill.this, AddBill.class));
                 } else
                     Toast.makeText(AddBill.this, "Fill Required Fields", Toast.LENGTH_SHORT).show();
             });
         }
+
+    private void processInsert(String name, String rem, String remTime) {
+        //String result = new DBHelper(this).addReminder(name, rem, remTime);
+
+        //calls the set alarm method to set alarm
+        setAlarm(name, rem, remTime);
+
+    }
+
+    private void setAlarm(String name, String rem, String remTime) {
+        //assigning alarm manager object to set alarm
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getApplicationContext(), AlarmBroadcast.class);
+        //sending data to alarm class to create channel and notification
+        intent.putExtra("event", name);
+        intent.putExtra("date", rem);
+        intent.putExtra("time", remTime);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 5, intent, PendingIntent.FLAG_IMMUTABLE);//error here??
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingIntent.isImmutable();
+        }
+        String dateandtime = rem + " " + timeToNotify;
+System.out.println(dateandtime);
+        DateFormat formatter = new SimpleDateFormat("M/d/yyyy hh:mm");
+        try {
+            Date date1 = formatter.parse(dateandtime);
+            am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //this intent will be called once the setting alarm is complete
+        Intent intentBack = new Intent(getApplicationContext(), ViewBill.class);
+        intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //navigates from adding reminder activity to ViewBill activity
+        startActivity(intentBack);
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -244,22 +240,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
         }
         return time;
     }
-  /*  scheduleNotification(date, time);*/
-    /*private void setAlarm(String text, String date, String time) throws ParseException {
-            AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getApplicationContext(), AlarmBroadcast.class);
-        intent.putExtra("Pay Bill", text);
-        intent.putExtra("Date", date);
-        intent.putExtra("Time", time);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent, PendingIntent.FLAG_ONE_SHOT);
-
-        String dateTime = date + " "+ timeToNotify;
-
-        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
-        Date date1= formatter.parse(dateTime);
-        am.set(AlarmManager.RTC_WAKEUP,date1.getTime(),pendingIntent);
-    }*/
 
     public void createNotificationChannel() {
         String id = "channelID";
@@ -284,7 +264,6 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
         intent.putExtra("textExtra", "Dynamic Text Body");
 
         String dateTime = date + " "+ timeToNotify;
-        /*String dateTime = date +" " +time;*/
 
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
         Date date1= formatter.parse(dateTime);
@@ -295,5 +274,4 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
         }
     }
     }
-/*
-}*/
+

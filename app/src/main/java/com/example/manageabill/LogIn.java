@@ -20,7 +20,6 @@ public class LogIn extends AppCompatActivity {
     private TextInputEditText username, password;
     DBHelper DB;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
