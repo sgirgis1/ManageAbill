@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION=2;
+    public static final int DATABASE_VERSION=6;
     public static final String DBNAME = "manageAbill.db";
     public DBHelper(Context context) {
         super(context, DBNAME, null, DATABASE_VERSION);
@@ -120,7 +120,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 
-   /* public void addReminder(String expenseName, String reminder, String reminderTime) {
+    public void addReminder(String expenseName, String reminder, String reminderTime) {
         SQLiteDatabase database = this.getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -128,7 +128,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("reminder", reminder);
         contentValues.put("reminderTime", reminderTime);
 
-   }*/
+   }
 
 
 }

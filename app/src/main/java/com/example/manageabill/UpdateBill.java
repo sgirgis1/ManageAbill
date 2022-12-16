@@ -193,7 +193,6 @@ public class UpdateBill extends AppCompatActivity implements View.OnClickListene
                 }, hour, minute,false);
                 timePickerDialog.show();
             }
-            /* private void*/
 
         });
 

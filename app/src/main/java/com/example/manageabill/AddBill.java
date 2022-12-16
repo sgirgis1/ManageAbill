@@ -192,7 +192,7 @@ public class AddBill extends AppCompatActivity implements View.OnClickListener {
         intent.putExtra("event", name);
         intent.putExtra("date", rem);
         intent.putExtra("time", remTime);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 5, intent, PendingIntent.FLAG_IMMUTABLE);//error here??
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             pendingIntent.isImmutable();
         }

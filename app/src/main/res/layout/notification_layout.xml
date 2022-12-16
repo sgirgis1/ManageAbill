@@ -15,7 +15,7 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="OK" />
+            android:text="View Bills" />
 
         <ImageView
             android:id="@+id/icon"
@@ -38,9 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:text=""
+                android:text="Time to Pay Your Bills"
+                android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/date"
@@ -49,7 +50,7 @@
                 android:layout_below="@+id/message"
                 android:layout_alignParentLeft="true"
                 android:layout_marginTop="3dp"
-                android:text=""
+                android:text=" "
                 android:textColor="#000000"
                 android:textSize="13sp" />
         </RelativeLayout>
