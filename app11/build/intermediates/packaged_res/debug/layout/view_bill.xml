@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".ViewBill">
+
+   <!-- <Spinner
+        android:id="@+id/spinner_bill"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:spinnerMode="dropdown"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="-188dp" />-->
+
+
+<!--
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="18dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="-39dp"
+        tools:layout_editor_absoluteY="-7dp">
+
+        <Spinner
+            android:id="@+id/spinner_bill"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:spinnerMode="dropdown"
+            android:backgroundTint="@color/black"
+            tools:layout_editor_absoluteX="-33dp"
+            tools:layout_editor_absoluteY="-6dp"
+            app:layout_constraintBaseline_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/idSavedBills"
+            android:layout_width="277dp"
+            android:layout_height="69dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:text="Saved Bills "
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="-15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+    </LinearLayout>-->
+<!--
+</androidx.constraintlayout.widget.ConstraintLayout>
+-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="25dp">
+
+        <LinearLayout
+            android:layout_width="372dp"
+            android:layout_height="78dp"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <!--text view Saved Bills-->
+            <TextView
+                android:id="@+id/idSavedBills"
+                android:layout_width="277dp"
+                android:layout_height="69dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:padding="5dp"
+                android:text="Saved Bills "
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_bill"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="-188dp" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
