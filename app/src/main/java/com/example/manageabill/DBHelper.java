@@ -40,9 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("password", password);
 
         long result = db.insert("users", null, values);
-        if (result ==-1) return false;
-        else
-            return true;
+        return result != -1;
     }
     public Boolean insertData(String expenseName, String expenseAmount, String etDate, String reminder, String reminderTime, String expenseNote) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -57,9 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         long result = db.insert("expense", null, values);
 
-        if (result ==-1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean updateData(String expenseName, String expenseAmount, String etDate, String reminder, String reminderTime, String expenseNote) {
@@ -75,11 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
 
             long result = db.update("expense", values, "expenseName=?", new String[]{expenseName});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
+            return result != -1;
         } else {
             return false;
         }
@@ -91,9 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from expense where expensename = ?", new String[] {expenseName});
         if (cursor.getCount() > 0) {
             long result = db.delete("expense", "expenseName=?", new String[]{expenseName});
-            if (result == -1) {
-                return false;
-            } else return true;
+            return result != -1;
         } else return false;
     }
     public Cursor getData() {
@@ -105,30 +95,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public Boolean checkUsername(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from users where username=?", new String[] {username});
-        if (cursor.getCount()>0)
-            return true;
-        else
-            return false;
+        return cursor.getCount() > 0;
     }
 
     public Boolean checkUsernamePassword(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from users where username=? and password=?", new String[] {username,password});
-        if (cursor.getCount()>0)
-            return true;
-        else
-            return false;
+        return cursor.getCount() > 0;
     }
 
-    public void addReminder(String expenseName, String reminder, String reminderTime) {
-        SQLiteDatabase database = this.getReadableDatabase();
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("expenseAmount", expenseName);
-        contentValues.put("reminder", reminder);
-        contentValues.put("reminderTime", reminderTime);
-
-   }
 
 
 }

@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -232,36 +229,6 @@ public class UpdateBill extends AppCompatActivity implements View.OnClickListene
         intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         //navigates from adding reminder activity to ViewBill activity
         startActivity(intentBack);
-    }
-    public void createNotificationChannel() {
-        String id = "channelID";
-        String name = "Daily Alerts";
-        String des = "Channel Description A Brief";
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            channel = new NotificationChannel(id, name, importance);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            channel.setDescription(des);
-        }
-        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            manager.createNotificationChannel(channel);
-        }
-    }
-    public void scheduleNotification(String date, String time) throws ParseException {
-        Intent intent = new Intent(getApplicationContext(), Notification.class);
-        intent.putExtra("titleExtra", "Dynamic Title");
-        intent.putExtra("textExtra", "Dynamic Text Body");
-        String dateTime = date + " "+ timeToNotify;
-        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
-        Date date1= formatter.parse(dateTime);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
-        }
     }
 
     public String FormatTime(int hr, int min) {
