@@ -24,7 +24,6 @@ public class NotificationMessage extends AppCompatActivity {
             }
         });
         textView = findViewById(R.id.message);
-
     }
 
 }
