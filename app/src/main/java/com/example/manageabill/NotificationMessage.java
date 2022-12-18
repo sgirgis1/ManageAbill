@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class NotificationMessage extends AppCompatActivity {
     TextView textView;
     Button viewBillsBtn;
@@ -24,11 +23,6 @@ public class NotificationMessage extends AppCompatActivity {
             }
         });
         textView = findViewById(R.id.message);
-        //call the data which is passed by another intent
-        //Bundle bundle = getIntent().getExtras();
-        //textView.setText(bundle.getString("message"));
-
-
     }
 
 }
