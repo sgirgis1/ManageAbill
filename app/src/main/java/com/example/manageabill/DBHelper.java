@@ -103,8 +103,4 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from users where username=? and password=?", new String[] {username,password});
         return cursor.getCount() > 0;
     }
-
-
-
-
 }
